@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+
 import EmployeeList from '../components/EmployeeList';
 import BeeLogo from '../images/beeLogo_large.png'
+
+
 
 
 function IndexScreen(props) {
@@ -11,19 +14,11 @@ function IndexScreen(props) {
 
   const createEmployee = () => {
     
-    const newEmployee = {
-      id: 1,
-      firstName: 'James',
-      middleInitial: 'G',
-      lastName: 'Furgeson',
-      dateOfBirth: '12/4/1986',
-      dateOfEmployment: '9/1/2019',
-      status: 'active'
-    }
-
-    props.dispatch({type: 'CREATE_EMPLOYEE', payload: newEmployee});
+    console.log('new employee to be added now')
+    //props.dispatch({type: 'CREATE_EMPLOYEE', payload: newEmployee});
 
   }
+
 
   
   return (

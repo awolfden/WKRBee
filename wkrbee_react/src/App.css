@@ -81,13 +81,27 @@
     background-color: rgba(0, 0, 0, 0.089);
     padding: 10px;
     border-radius: 5px;
+    width: 55%;
+    min-width: 460px;
 }
 
 .indexLogoDiv {
     display: flex;
     justify-content: center;
     opacity: 0.4;
-    min-width: 350px;
-    width: 40%;
+    min-width: 200px;
+    width: 35%;
+    padding: 50px;
+}
+
+.indexLogoDiv img {
+    width: 100%;
+    min-width: 200px;
+}
+
+.modalDiv {
+    display: flex;
+    flex-direction: column;
+    /* color: #eedfb2; */
 }
 

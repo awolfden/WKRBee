@@ -1,19 +1,30 @@
-import React, { useEffect } from 'react';
-
+import React from 'react';
+import TransitionsModal from './EditModal';
 
 function EmployeeList(props) {
   const { employees } = props;
+
+  
   
   const renderEmployees = employees.map((employee, index) => {
-      return(
-        <div key={index}>
-          <div style={{display: 'flex', justifyContent: 'left'}}>
-          <div style={{padding: '0 10px'}}>{employee.firstName} {employee.middleInitial} {employee.lastName}</div>
-          <div style={{padding: '0 10px'}}>{employee.status}</div>
-          <div style={{padding: '0 10px'}}>{employee.dateOfBirth}</div>
-          <div style={{padding: '0 10px'}}>{employee.dateOfEmployment}</div>
-          <div style={{padding: '0 10px'}}>{employee.id}</div>
-          <div onClick={() => console.log('fuck you')} style={{padding: '0 10px'}}>EDIT</div>
+      
+    const backgroundColor = (index) => {
+        if(index % 2 === 0){
+          return '#eedfb2'
+        } else {
+          return '#ddd9c8'
+        }
+    }
+
+    return(
+        <div key={employee.id} id={employee.id} style={{backgroundColor:backgroundColor(index)}}>
+          <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+          <div ><div style={{minWidth: '150px'}}>{employee.firstName} {employee.middleInitial} {employee.lastName}</div></div>
+          <div ><div style={{justifyContent:'left'}}>{employee.status}</div></div>
+          <div >{employee.dateOfBirth}</div>
+          <div >{employee.dateOfEmployment}</div>
+          <div >{employee.id}</div>
+          <TransitionsModal employee={employee} />
           </div>
         </div>
       )

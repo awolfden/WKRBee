@@ -18,7 +18,7 @@ const theme = createMuiTheme({
         },
         secondary: {
             main: brown[900],
-            light: brown[400],
+            light: brown[100],
             dark: brown[400]
         },
         
@@ -34,7 +34,16 @@ const initialState = {
         dateOfBirth: '12/4/1986',
         dateOfEmployment: '9/1/2019',
         status: 'active'
-    }],
+    },
+    {
+        id: 2,
+        firstName: 'James',
+        middleInitial: 'G',
+        lastName: 'Furgeson',
+        dateOfBirth: '12/4/1986',
+        dateOfEmployment: '9/1/2019',
+        status: 'active'
+      }],
     
 }
 
