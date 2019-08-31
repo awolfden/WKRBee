@@ -1,0 +1,41 @@
+
+#auth h2 {
+    margin: -10px;
+    opacity: 0.75;
+    font-size: 15px;
+}
+
+.authScreenHeading {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.authScreenLogoDiv {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+}
+
+.authScreenLogo {
+    opacity: 0.4;
+}
+
+.authScreenFormsContainer {
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+}
+
+.authScreenFormsDiv {
+    padding: 20px;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.authScreenFormsDiv div {
+    padding: 10px;
+}
