@@ -1,4 +1,8 @@
 
+#auth h1 {
+    font-size: 35px;
+}
+
 #auth h2 {
     margin: -10px;
     opacity: 0.75;
@@ -20,6 +24,8 @@
 
 .authScreenLogo {
     opacity: 0.4;
+    width: 80%;
+    min-width: 315px;
 }
 
 .authScreenFormsContainer {
@@ -38,4 +44,11 @@
 
 .authScreenFormsDiv div {
     padding: 10px;
+}
+
+.loginForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
 }

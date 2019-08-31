@@ -1,42 +1,54 @@
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles(theme => ({
     container: {
       display: 'flex',
       flexWrap: 'wrap',
+      justifyContent: 'center'
     },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: 200,
+    input: {
+      margin: theme.spacing(1),
+      width: 250
     },
-    dense: {
-      marginTop: 19,
-    },
-    menu: {
-      width: 200,
-    },
+    button: {
+        margin: theme.spacing(1),
+        width: 150
+    }
   }));
+
 
 
 function LoginForm() {
     const classes = useStyles();
 
-  
     return (
     <form className="loginForm">
-
-      <TextField
-        id="standard-with-placeholder"
-        label="With placeholder"
-        placeholder="Placeholder"
-        className={classes.textField}
-        margin="normal"
+      <h3>Login</h3> 
+      <div className={classes.container}>
+      <Input
+        placeholder="Username"
+        className={classes.input}
+        inputProps={{
+          'aria-label': 'description',
+        }}
       />
+      <Input
+        placeholder="Password"
+        className={classes.input}
+        inputProps={{
+          'aria-label': 'description',
+        }}
+      />
+      </div>
+      <div>
+        <Button variant="contained" color="primary" className={classes.button}>
+            Submit
+        </Button>
+      </div>
     </form>
   );
 }

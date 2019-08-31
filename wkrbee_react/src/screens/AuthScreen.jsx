@@ -1,5 +1,5 @@
 import React from 'react';
-import BeeLogo from '../images/beeLogo.png';
+import BeeLogo from '../images/beeLogo_large.png';
 import LoginForm from '../components/LoginForm';
 
 
@@ -17,7 +17,7 @@ function AuthScreen() {
         </div>
         <div className='authScreenFormsDiv'>
           <LoginForm/>
-          <div>Sign Up Form</div>
+          <LoginForm/>
         </div>
       </div>
     </div>
