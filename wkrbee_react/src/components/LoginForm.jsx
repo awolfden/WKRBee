@@ -22,12 +22,12 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function LoginForm() {
+function LoginForm(props) {
     const classes = useStyles();
 
     return (
     <form className="loginForm">
-      <h3>Login</h3> 
+      <h3>{props.title}</h3> 
       <div className={classes.container}>
       <Input
         placeholder="Username"

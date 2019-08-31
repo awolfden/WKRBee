@@ -1,12 +1,14 @@
 
 #auth h1 {
-    font-size: 35px;
+    font-size: 55px;
+    font-weight: 300;
 }
 
 #auth h2 {
-    margin: -10px;
+    margin: -15px;
     opacity: 0.75;
-    font-size: 15px;
+    font-size: 25px;
+    font-weight: 200;
 }
 
 .authScreenHeading {
@@ -20,26 +22,32 @@
     width: 35%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+    text-align: center;
 }
 
 .authScreenLogo {
-    opacity: 0.4;
+    opacity: 0.2;
     width: 80%;
-    min-width: 315px;
+    min-width: 350px;
+    
 }
 
 .authScreenFormsContainer {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     padding: 100px;
 }
 
 .authScreenFormsDiv {
     padding: 20px;
     width: 65%;
+    min-width: 590px;
     display: flex;
     justify-content: center;
-    
 }
 
 .authScreenFormsDiv div {
@@ -51,4 +59,9 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
+}
+
+.loginForm h3 {
+    font-size: 30px;
+    font-weight: 200;
 }

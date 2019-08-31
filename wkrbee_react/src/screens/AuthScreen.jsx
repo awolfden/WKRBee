@@ -14,10 +14,11 @@ function AuthScreen() {
       <div className='authScreenFormsContainer'>
         <div className='authScreenLogoDiv'>
           <img className='authScreenLogo' src={BeeLogo} alt='workerbee logo'/>
+          <p>WokerBee is an integrated employee management system for the modern business.</p>
         </div>
         <div className='authScreenFormsDiv'>
-          <LoginForm/>
-          <LoginForm/>
+          <LoginForm title={"Login"}/>
+          <LoginForm title={"Sign Up"}/>
         </div>
       </div>
     </div>

@@ -45,7 +45,7 @@ export default function ElevateAppBar(props) {
         <ElevationScroll {...props}>
             <AppBar>
             <Toolbar>
-                <img src={HiveLogo} style={{height: '50px', paddingRight: '25px'}}/>
+                <img src={HiveLogo} alt={'worker bee logo'} style={{height: '50px', paddingRight: '25px'}}/>
                 <Typography variant="h6">WorkerBee</Typography>
             </Toolbar>
             </AppBar>
