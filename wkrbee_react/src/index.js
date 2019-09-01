@@ -44,18 +44,18 @@ const initialState = {
         dateOfEmployment: '9/1/2019',
         status: 'active'
       }],
-    
+    logged: false
 }
 
 
 function reducer(state = initialState, action) {
     switch(action.type) {
-        // case 'LOGIN':
-        //     const token = loginUser(action.payload);
-        //     return { ...state, authToken: token }
-        // case 'SIGNUP':
-        //     const token = signupUser(action.payload);
-        //     return { ...state, authToken: token }
+        case 'LOGIN':
+            return { ...state, logged: true }
+        case 'LOGOUT':
+            return { ...state, logged: false }
+        case 'SIGNUP':
+            return { ...state, logged: true }
         case 'CREATE_EMPLOYEE':
             console.log(action.payload);
             return {...state, employees: action.payload }
@@ -64,6 +64,8 @@ function reducer(state = initialState, action) {
     }
 
 }
+
+
 
 const store = createStore(reducer);
 

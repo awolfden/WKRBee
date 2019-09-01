@@ -70,6 +70,10 @@
     font-weight: 200;
 }
 
+.indexScreenDiv {
+    margin-bottom: 100px;
+}
+
 .indexContentDiv {
     display: flex;
     justify-content: space-evenly;

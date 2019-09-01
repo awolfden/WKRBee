@@ -22,7 +22,7 @@ function IndexScreen(props) {
 
   
   return (
-    <div className="App">
+    <div className="indexScreenDiv">
       <div className='indexScreenTitle'>
         <h2>Welcome to WorkerBee: Employee management that's sweeter than honey!</h2>
       </div>

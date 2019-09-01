@@ -25,6 +25,7 @@ class LoginForm extends React.Component {
         const { username, password } = this.state;
         if(username && password){
             console.log('hitting');
+            this.props.dispatch({type: 'LOGIN', payload: true});
             
         }
         
@@ -36,7 +37,7 @@ class LoginForm extends React.Component {
 
     render(){
         const { username, password, isLoading } = this.state;
-        console.log(this.state)
+        console.log(this.props)
         return (
             <form onSubmit={this.onSubmit} className="loginForm">
               <h3>{this.props.title}</h3> 
@@ -75,7 +76,7 @@ class LoginForm extends React.Component {
     
 
 const mapStateToProps = (state) => ({
-    
+    state: state
 })
 
 export default connect(mapStateToProps)(LoginForm);
