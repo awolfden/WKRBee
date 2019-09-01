@@ -13,11 +13,9 @@ class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            userName: '',
             password: ''
         }
-        
-
     }
 
     // onSubmitRegister = (e) => {
@@ -40,32 +38,33 @@ class LoginForm extends React.Component {
 
       console.log(formData);
 
-      // try {
-      //     const createdUser = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/users/register`, {
-      //         method: 'POST',
-      //         credentials: 'include',
-      //         body: JSON.stringify(formData),
-      //         headers: {
-      //             'Content-Type': 'application/json'
-      //         }
-      //     });
+      try {
+          const createdUser = await fetch(`http://localhost:9001/users/register`, {
+              method: 'POST',
+              credentials: 'include',
+              body: JSON.stringify(formData),
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          });
 
-      //     const parsedResponse = await createdUser.json();
-      //       if(parsedResponse.data !== 'User name not available'){
-      //         this.setState({
-      //           isLogged: true,
-      //           loggedUser: parsedResponse.data.user,
-      //           loggedUserId: parsedResponse.data.usersDbId,
-      //       })
-      //     } else {
-      //       this.setState({
-      //         logFailMsg: 'User name not available'
-      //       })
-      //     }
-      // } catch(err) {
-      //     console.log(err)
-      // }
-      // this.getWorkouts();
+          const parsedResponse = await createdUser.json();
+            if(parsedResponse.data !== 'User name not available'){
+              this.setState({
+                isLogged: true,
+                loggedUser: parsedResponse.data.user,
+                loggedUserId: parsedResponse.data.usersDbId,
+            });
+            this.props.dispatch({type: 'LOGIN', payload: true});
+          } else {
+            this.setState({
+              logFailMsg: 'User name not available'
+            })
+          }
+      } catch(err) {
+          console.log(err)
+      }
+      
   }
 
     onSubmitLogin = (formData, e) => {
@@ -104,7 +103,7 @@ class LoginForm extends React.Component {
               <div>
               <Input
                 field='identifier'
-                name='username'
+                name='userName'
                 onChange={this.onChange}
                 placeholder='Username'
                 inputProps={{
