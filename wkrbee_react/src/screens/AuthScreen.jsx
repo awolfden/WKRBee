@@ -17,7 +17,6 @@ function AuthScreen(props) {
       <div className='authScreenHeading'>
         <h1>Welcome to WorkerBee!</h1>
         <h2>Please Log In or Sign Up to Manage your Hive</h2>
-        <h3>{props.firstName}</h3>
       </div>
       <div className='authScreenFormsContainer'>
         <div className='authScreenLogoDiv'>

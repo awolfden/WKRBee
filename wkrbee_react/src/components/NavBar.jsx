@@ -54,7 +54,9 @@ function ElevateAppBar(props) {
                   <img src={HiveLogo} alt={'worker bee logo'} style={{height: '50px', paddingRight: '25px'}}/>
                   <Typography variant="h6">WorkerBee</Typography>
                 </div>
-                <Typography onClick={logout} variant="h6" className={classes.logout} id='logout'>Logout</Typography>
+                {props.logged ? <Typography onClick={logout} variant="h6" className={classes.logout} id='logout'>Logout</Typography> 
+                : <Typography variant="h6" className={classes.logout} id='logout'></Typography>
+                }
             </Toolbar>
             </AppBar>
         </ElevationScroll>
