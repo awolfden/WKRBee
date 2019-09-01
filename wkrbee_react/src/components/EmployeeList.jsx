@@ -1,5 +1,6 @@
 import React from 'react';
-import TransitionsModal from './EditModal';
+import EditModal from './EditModal';
+import ShowModal from './ShowModal';
 
 function EmployeeList(props) {
   const { employees } = props;
@@ -24,7 +25,8 @@ function EmployeeList(props) {
           <div >{employee.dateOfBirth}</div>
           <div >{employee.dateOfEmployment}</div>
           <div >{employee.id}</div>
-          <TransitionsModal employee={employee} />
+          <ShowModal employee={employee} />
+          <EditModal employee={employee} />
           </div>
         </div>
       )

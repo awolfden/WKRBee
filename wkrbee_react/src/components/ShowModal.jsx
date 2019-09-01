@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function EditModal(props) {
+export default function ShowModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   
@@ -51,7 +51,8 @@ export default function EditModal(props) {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.preventDefault();
     setOpen(false);
   };
 
@@ -67,25 +68,11 @@ export default function EditModal(props) {
     currency: 'EUR',
   });
 
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('submit hit');
-  };
-
-  const handleDelete = (e) => {
-    e.preventDefault();
-    handleClose();
-    console.log('delete hit');
-  }
 
   return (
     <div>
       <button className={classes.button} type="button" onClick={handleOpen}>
-        Edit Employee
+        View Employee
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -101,35 +88,29 @@ export default function EditModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Edit {employee.firstName} {employee.middleInitial} {employee.lastName}</h2>
-            <form onSubmit={handleSubmit}>
+            <h2 id="transition-modal-title">{employee.firstName} {employee.middleInitial} {employee.lastName}</h2>
+            <form >
                 <div className='modalDiv'>
                     <div>
                         <TextField
                             id="standard-name"
                             label='First Name'
-                            // placeholder='First Name'
                             className={classes.textField}
                             value={values.firstName}
-                            onChange={handleChange('firstName')}
                             margin="normal"
                         />
                         <TextField
                             id="standard-name"
                             label="Middle Initial"
-                            // placeholder="Middle Initial"
                             className={classes.textField}
                             value={values.middleInitial}
-                            onChange={handleChange('middleInitial')}
                             margin="normal"
                         />
                         <TextField
                             id="standard-name"
                             label="Last Name"
-                            // placeholder="Last Name"
                             className={classes.textField}
                             value={values.lastName}
-                            onChange={handleChange('lastName')}
                             margin="normal"
                         />
                     </div>
@@ -137,46 +118,36 @@ export default function EditModal(props) {
                         <TextField
                             id="standard-name"
                             label="Employment Status"
-                            // placeholder="Employment Status"
                             className={classes.textField}
                             value={values.status}
-                            onChange={handleChange('status')}
                             margin="normal"
                         />
                         <TextField
                             id="standard-name"
                             label={"Date Of Hire: " + employee.dateOfEmployment}
-                            // placeholder="Date Of Hire"
                             className={classes.textField}
                             value={values.dateOfHire}
-                            onChange={handleChange('dateOfHire')}
                             margin="normal"
                         />
                         <TextField
                             id="standard-name"
                             label="Date of Birth"
-                            // placeholder="Date of Birth"
                             className={classes.textField}
                             value={values.dateOfBirth}
-                            onChange={handleChange('dateOfBirth')}
                             margin="normal"
                         />
                     </div>
                     <TextField
                         id="standard-name"
                         label="Employee ID"
-                        // placeholder="Employee ID"
                         className={classes.textField}
                         value={values.id}
-                        onChange={handleChange('id')}
                         margin="normal"
                     />
                 </div>
-                <Button onClick={handleDelete} variant='contained' className={classes.modalDeleteButton}>
-                    Delete Employee
-                </Button>
+                
                 <Button type='submit' onClick={handleClose} variant='contained' className={classes.modalButton}>
-                    Submit Changes
+                    Done
                 </Button>
             </form>
           </div>
