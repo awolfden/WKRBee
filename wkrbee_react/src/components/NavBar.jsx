@@ -39,8 +39,23 @@ ElevationScroll.propTypes = {
 function ElevateAppBar(props) {
   const classes = useStyles();
   
-  const logout = () => {
-    props.dispatch({type: 'LOGOUT', payload: false})
+
+
+  const logout = async () => {
+    try {
+      const logoutUser = await fetch(`http://localhost:9001/users/logout`, {
+        method: 'GET',
+        credentials: 'include'
+      })
+
+      const parsedResponse = await logoutUser.json();
+      console.log(parsedResponse, 'this is parsed response')
+
+      
+    } catch(err) {
+        console.log(err);
+    } 
+    props.dispatch({type: 'LOGOUT', payload: false});
   }
   
   return (
