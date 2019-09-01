@@ -39,7 +39,9 @@ ElevationScroll.propTypes = {
   window: PropTypes.func,
 };
 
-
+const logout = () => {
+  console.log('logout function hit');
+}
 
 export default function ElevateAppBar(props) {
   const classes = useStyles();
@@ -54,7 +56,7 @@ export default function ElevateAppBar(props) {
                   <img src={HiveLogo} alt={'worker bee logo'} style={{height: '50px', paddingRight: '25px'}}/>
                   <Typography variant="h6">WorkerBee</Typography>
                 </div>
-                <Typography variant="h6" className={classes.logout} id='logout'>Logout</Typography>
+                <Typography onClick={logout} variant="h6" className={classes.logout} id='logout'>Logout</Typography>
             </Toolbar>
             </AppBar>
         </ElevationScroll>
