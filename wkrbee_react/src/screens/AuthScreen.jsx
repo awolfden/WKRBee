@@ -9,7 +9,7 @@ import LoginForm from '../components/LoginForm';
 function AuthScreen(props) {
   
 
-  // console.log(props.state);
+console.log(props.state);
 
 
   return (
