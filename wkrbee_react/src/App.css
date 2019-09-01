@@ -74,14 +74,14 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    margin-top: 75px;
+    margin-top: 25px;
 }
 
 .employeeListDiv {
     background-color: rgba(0, 0, 0, 0.089);
     padding: 10px;
     border-radius: 5px;
-    width: 55%;
+    width: 65%;
     min-width: 460px;
 }
 
@@ -90,7 +90,7 @@
     justify-content: center;
     opacity: 0.4;
     min-width: 200px;
-    width: 35%;
+    width: 25%;
     padding: 50px;
 }
 
@@ -102,6 +102,43 @@
 .modalDiv {
     display: flex;
     flex-direction: column;
-    /* color: #eedfb2; */
+    /* color: #7008036c; */
 }
 
+.indexScreenTitle h2 {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.indexScreenOrg {
+    background-image: url('./images/honeycomb_light.jpg');
+    background-size: contain;
+    background-blend-mode: lighten;
+    width: 100%;
+    padding: 5px 20px;
+    margin-top: 60px;
+    border-radius: 20px;
+}
+
+.indexScreenOrg h3 {
+    font-weight: 400;
+}
+
+.addEmployee {
+    font-weight: 200;
+}
+
+.addEmployee:hover {
+    color: green;
+}
+
+#logout:hover {
+    color: gray;
+}
+
+/* for logout on nav */
+.MuiToolbar-root {
+    justify-content: space-between;
+}

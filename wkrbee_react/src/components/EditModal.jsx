@@ -24,9 +24,16 @@ const useStyles = makeStyles(theme => ({
   },
   modalButton: {
     backgroundColor: theme.palette.secondary.light,
+    border: '1px solid green',
     marginTop: 20,
     float: "right"
   }, 
+  modalDeleteButton: {
+    backgroundColor: theme.palette.secondary.light,
+    border: '1px solid #7008036c',
+    marginTop: 20,
+    float: "left"
+  },
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
@@ -68,6 +75,12 @@ export default function TransitionsModal(props) {
     e.preventDefault();
     console.log('submit hit');
   };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    handleClose();
+    console.log('delete hit');
+  }
 
   return (
     <div>
@@ -159,6 +172,9 @@ export default function TransitionsModal(props) {
                         margin="normal"
                     />
                 </div>
+                <Button onClick={handleDelete} variant='contained' className={classes.modalDeleteButton}>
+                    Delete Employee
+                </Button>
                 <Button type='submit' onClick={handleClose} variant='contained' className={classes.modalButton}>
                     Submit Changes
                 </Button>

@@ -23,18 +23,18 @@ function IndexScreen(props) {
   
   return (
     <div className="App">
-      <div>
-        <h2>Welcome to WorkerBee where we make employee management as sweet as honey!</h2>
+      <div className='indexScreenTitle'>
+        <h2>Welcome to WorkerBee: Employee management that's sweeter than honey!</h2>
       </div>
 
-      <div>
+      <div className='indexScreenOrg'>
         <h3>Organization: Beehive Inc.</h3>
         <h3>Active Employees: {employees.length}</h3>
       </div>
 
       <div className='indexContentDiv' >
         <div className='employeeListDiv'>
-          <h3 onClick={createEmployee} >Add New Employee +</h3>
+          <h3 onClick={createEmployee} className="addEmployee">Add New Employee +</h3>
           <EmployeeList employees={employees} />
         </div>
         <div className='indexLogoDiv'>
