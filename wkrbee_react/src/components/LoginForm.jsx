@@ -67,17 +67,41 @@ class LoginForm extends React.Component {
       
   }
 
-    onSubmitLogin = (formData, e) => {
-      e.preventDefault();
-      console.log(formData);
-      // const { username, password } = this.state;
-      // if(username && password){
-      //     console.log('hitting login');
-      //     this.props.dispatch({type: 'LOGIN', payload: true});
+  //   onSubmitLogin = (formData, e) => {
+  //     e.preventDefault();
+  //     console.log(formData);
+  //     const { username, password } = this.state;
+  //     if(username && password){
+  //         console.log('hitting login');
+  //         this.props.dispatch({type: 'LOGIN', payload: true});
           
-      // }
+  //     }
       
-  }
+  // }
+
+  onSubmitLogin = async (formData, e) => {
+    e.preventDefault();
+    console.log('hit login route');
+    try {
+      const loginUser = await fetch(`http://localhost:9001/users/login`, {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify(formData),
+      headers: {
+          'Content-Type': 'application/json',
+      }
+      })
+      const parsedResponse = await loginUser.json();
+      console.log(parsedResponse);
+      if(parsedResponse.data.msg === 'login successful'){
+        this.props.dispatch({type: 'LOGIN', payload: true}); 
+      }
+
+    } catch(err) {
+      console.log(err);
+    }
+
+}
 
     onChange = (e) => {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
