@@ -1,37 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
 
-
-
-
+// I created this component as a class to show that I know how to use 'this' since 
+// that was the question that I missed in the phone interview :) 
 
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = { // local state used here only for the form submission
             userName: '',
             password: ''
         }
     }
-
-    // onSubmitRegister = (e) => {
-    //     e.preventDefault();
-    //     const { username, password } = this.state;
-    //     if(username && password){
-    //         console.log('hitting signup');
-
-
-
-    //         this.props.dispatch({type: 'SIGNUP', payload: true});
-            
-    //     }
-        
-    // }
-
 
     onSubmitRegister = async (formData, e) => {
       e.preventDefault();
@@ -65,43 +48,31 @@ class LoginForm extends React.Component {
           console.log(err)
       }
       
-  }
-
-  //   onSubmitLogin = (formData, e) => {
-  //     e.preventDefault();
-  //     console.log(formData);
-  //     const { username, password } = this.state;
-  //     if(username && password){
-  //         console.log('hitting login');
-  //         this.props.dispatch({type: 'LOGIN', payload: true});
-          
-  //     }
-      
-  // }
-
-  onSubmitLogin = async (formData, e) => {
-    e.preventDefault();
-    console.log('hit login route');
-    try {
-      const loginUser = await fetch(`http://localhost:9001/users/login`, {
-      method: 'POST',
-      credentials: 'include',
-      body: JSON.stringify(formData),
-      headers: {
-          'Content-Type': 'application/json',
-      }
-      })
-      const parsedResponse = await loginUser.json();
-      console.log(parsedResponse);
-      if(parsedResponse.data.msg === 'login successful'){
-        this.props.dispatch({type: 'LOGIN', payload: true}); 
-      }
-
-    } catch(err) {
-      console.log(err);
     }
 
-}
+    onSubmitLogin = async (formData, e) => {
+      e.preventDefault();
+      console.log('hit login route');
+      try {
+        const loginUser = await fetch(`http://localhost:9001/users/login`, {
+        method: 'POST',
+        credentials: 'include',
+        body: JSON.stringify(formData),
+        headers: {
+            'Content-Type': 'application/json',
+        }
+        })
+        const parsedResponse = await loginUser.json();
+        console.log(parsedResponse);
+        if(parsedResponse.data.msg === 'login successful'){
+          this.props.dispatch({type: 'LOGIN', payload: parsedResponse.data.usersDbId}); 
+        }
+
+      } catch(err) {
+        console.log(err);
+      }
+
+    }
 
     onChange = (e) => {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
@@ -117,9 +88,6 @@ class LoginForm extends React.Component {
     }
 
     render(){
-        const { username, password, isLoading } = this.state;
-        console.log(this.props);
-        
 
         return (
             <form onSubmit={this.whichSubmit.bind(null, this.state)} className="loginForm">
@@ -139,6 +107,7 @@ class LoginForm extends React.Component {
                 name='password'
                 onChange={this.onChange}
                 placeholder='Password'
+                type='password'
                 inputProps={{
                   'aria-label': 'description',
                 }}
@@ -146,7 +115,7 @@ class LoginForm extends React.Component {
               
               </div>
               <div>
-                <Button type='submit' variant='contained' color='primary' diabled={isLoading}>
+                <Button type='submit' variant='contained' color='primary' >
                     Submit
                 </Button>
               </div>

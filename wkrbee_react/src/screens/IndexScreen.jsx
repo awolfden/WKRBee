@@ -22,16 +22,18 @@ function IndexScreen(props) {
     const getEmployees = async () => {
 
       try {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_ADDRESS}/employees`);
+          const response = await fetch(`http://localhost:9001/employees/`);
 
           if(response.status !== 200){
               throw(Error(response.statusText));
           }
 
-          const parsedEmployees = await response.json();        
+          const parsedEmployees = await response.json();  
+          console.log(parsedEmployees);      
           if(props.state.logged){
               const employeeArr = parsedEmployees.data;
-              const userEmployees = employeeArr.filter((employee) => employee.user.toString() === props.state.loggedUserId.toString());
+              console.log(employeeArr, 'employee array');
+              const userEmployees = employeeArr.filter((employee) => employee.user.toString() === props.state.user.toString());
               
               props.dispatch({ type:'GET_EMPLOYEES', payload: userEmployees })
 

@@ -44,18 +44,27 @@ const initialState = {
         dateOfEmployment: '9/1/2019',
         status: 'active'
       }],
-    logged: false
+        logged: false,
+        user: ''
 }
 
 
 function reducer(state = initialState, action) {
+    console.log(action);
     switch(action.type) {
         case 'LOGIN':
-            return { ...state, logged: true }
+            return { ...state, logged: true, user: action.payload }
         case 'LOGOUT':
             return { ...state, logged: false }
         case 'SIGNUP':
             return { ...state, logged: true }
+        case 'GET_EMPLOYEES':
+            if(action.payload.length === 0){
+                return { ...state }
+            } else {
+                return { ...state, employees: action.payload, ...state.logged, ...state.user }
+            }
+            
         case 'CREATE_EMPLOYEE':
             console.log(action.payload);
             return {...state, employees: action.payload }
@@ -64,8 +73,6 @@ function reducer(state = initialState, action) {
     }
 
 }
-
-
 
 
 
