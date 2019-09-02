@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import EmployeeList from '../components/EmployeeList';
 import BeeLogo from '../images/beeLogo_large.png';
+import CreateModal from '../components/CreateModal';
 // import { getEmployees } from '../api_functions/EmployeeFunctions';
 
 
 
 
 function IndexScreen(props) {
-  console.log(props);
+  console.log(props.state);
   const { employees } = props.state;
   
 
@@ -29,12 +30,13 @@ function IndexScreen(props) {
           }
 
           const parsedEmployees = await response.json();  
-          console.log(parsedEmployees);      
+          console.log(parsedEmployees);   
+          console.log(props.state.user, 'state user')   
           if(props.state.logged){
               const employeeArr = parsedEmployees.data;
               console.log(employeeArr, 'employee array');
               const userEmployees = employeeArr.filter((employee) => employee.user.toString() === props.state.user.toString());
-              
+              console.log(userEmployees, 'user employees');
               props.dispatch({ type:'GET_EMPLOYEES', payload: userEmployees })
 
           }   
@@ -62,7 +64,7 @@ function IndexScreen(props) {
 
       <div className='indexContentDiv' >
         <div className='employeeListDiv'>
-          <h3 onClick={createEmployee} className="addEmployee">Add New Employee +</h3>
+          <CreateModal getEmployees={getEmployees}>Add New Employee +</CreateModal>
           <EmployeeList employees={employees} />
         </div>
         <div className='indexLogoDiv'>

@@ -33,12 +33,8 @@ class LoginForm extends React.Component {
 
           const parsedResponse = await createdUser.json();
             if(parsedResponse.data !== 'User name not available'){
-              this.setState({
-                isLogged: true,
-                loggedUser: parsedResponse.data.user,
-                loggedUserId: parsedResponse.data.usersDbId,
-            });
-            this.props.dispatch({type: 'LOGIN', payload: true});
+
+            this.props.dispatch({type: 'LOGIN', payload: parsedResponse.data.usersDbId});
           } else {
             this.setState({
               logFailMsg: 'User name not available'

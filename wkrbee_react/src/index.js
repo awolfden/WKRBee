@@ -28,22 +28,13 @@ const theme = createMuiTheme({
 const initialState = {
     employees: [{
         id: 1,
-        firstName: 'Adam',
-        middleInitial: 'G',
-        lastName: 'Wolfman',
+        firstName: 'Add',
+        middleInitial: 'An',
+        lastName: 'Employee',
         dateOfBirth: '12/4/1986',
         dateOfEmployment: '9/1/2019',
-        status: 'active'
-    },
-    {
-        id: 2,
-        firstName: 'James',
-        middleInitial: 'G',
-        lastName: 'Furgeson',
-        dateOfBirth: '12/4/1986',
-        dateOfEmployment: '9/1/2019',
-        status: 'active'
-      }],
+        status: 'ACTIVE'
+    }],
         logged: false,
         user: ''
 }
@@ -55,9 +46,17 @@ function reducer(state = initialState, action) {
         case 'LOGIN':
             return { ...state, logged: true, user: action.payload }
         case 'LOGOUT':
-            return { ...state, logged: false }
+            return { ...state, employees: [{
+                id: 1,
+                firstName: 'Add',
+                middleInitial: 'An',
+                lastName: 'Employee',
+                dateOfBirth: '12/4/1986',
+                dateOfEmployment: '9/1/2019',
+                status: 'ACTIVE'
+            }], logged: false, user: '' }
         case 'SIGNUP':
-            return { ...state, logged: true }
+            return { ...state, logged: true, user: action.payload }
         case 'GET_EMPLOYEES':
             if(action.payload.length === 0){
                 return { ...state }

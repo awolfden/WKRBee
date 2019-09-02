@@ -4,8 +4,6 @@ import ShowModal from './ShowModal';
 
 function EmployeeList(props) {
   const { employees } = props;
-
-  
   
   const renderEmployees = employees.map((employee, index) => {
       

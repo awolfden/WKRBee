@@ -50,12 +50,15 @@ function ElevateAppBar(props) {
 
       const parsedResponse = await logoutUser.json();
       console.log(parsedResponse, 'this is parsed response')
-
+      if(parsedResponse.data === 'logged user out'){
+        props.dispatch({type: 'LOGOUT', payload: false});
+      }
       
     } catch(err) {
         console.log(err);
     } 
-    props.dispatch({type: 'LOGOUT', payload: false});
+
+
   }
   
   return (
