@@ -28,13 +28,22 @@ const theme = createMuiTheme({
 const initialState = {
     employees: [{
         id: 1,
-        firstName: 'Add',
-        middleInitial: 'An',
-        lastName: 'Employee',
+        firstName: 'Adam',
+        middleInitial: 'G',
+        lastName: 'Wolfman',
         dateOfBirth: '12/4/1986',
         dateOfEmployment: '9/1/2019',
-        status: 'ACTIVE'
-    }],
+        status: 'active'
+    },
+    {
+        id: 2,
+        firstName: 'James',
+        middleInitial: 'G',
+        lastName: 'Furgeson',
+        dateOfBirth: '12/4/1986',
+        dateOfEmployment: '9/1/2019',
+        status: 'active'
+      }],
         logged: false,
         user: ''
 }

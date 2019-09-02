@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -41,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function EditModal(props) {
+function EditModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   
@@ -62,7 +63,7 @@ export default function EditModal(props) {
     status: employee.status,
     dateOfHire: employee.dateOfEmployment,
     dateOfBirth: employee.dateOfBirth,
-    id: employee.id,
+    id: employee._id,
     multiline: 'Controlled',
     currency: 'EUR',
   });
@@ -76,11 +77,35 @@ export default function EditModal(props) {
     console.log('submit hit');
   };
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-    handleClose();
-    console.log('delete hit');
-  }
+  // const handleDelete = (e) => {
+  //   e.preventDefault();
+  //   handleClose();
+  //   console.log('delete hit');
+  // }
+
+  const handleDelete = async (deletedEmployeeId) => {
+    console.log('delete hit', deletedEmployeeId);
+    try{
+        const deleteWorkout = await fetch(`http://localhost:9001/employees/${deletedEmployeeId}`, {
+            method: 'DELETE',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const parsedResponse = await deleteWorkout.json();
+        if(parsedResponse.status === 200){
+          console.log('successful delete')  
+          props.getEmployees();
+        }
+
+
+    } catch(err) {
+        console.log(err);
+    }
+
+  };
 
   return (
     <div>
@@ -145,7 +170,7 @@ export default function EditModal(props) {
                         />
                         <TextField
                             id="standard-name"
-                            label={"Date Of Hire: " + employee.dateOfEmployment}
+                            label={"Date Of Hire: "}
                             // placeholder="Date Of Hire"
                             className={classes.textField}
                             value={values.dateOfHire}
@@ -162,17 +187,9 @@ export default function EditModal(props) {
                             margin="normal"
                         />
                     </div>
-                    <TextField
-                        id="standard-name"
-                        label="Employee ID"
-                        // placeholder="Employee ID"
-                        className={classes.textField}
-                        value={values.id}
-                        onChange={handleChange('id')}
-                        margin="normal"
-                    />
+                    
                 </div>
-                <Button onClick={handleDelete} variant='contained' className={classes.modalDeleteButton}>
+                <Button onClick={() => handleDelete(employee._id)} variant='contained' className={classes.modalDeleteButton}>
                     Delete Employee
                 </Button>
                 <Button type='submit' onClick={handleClose} variant='contained' className={classes.modalButton}>
@@ -185,3 +202,9 @@ export default function EditModal(props) {
     </div>
   );
 }
+
+const mapStateToProps = (state) =>({
+  state: state
+});
+
+export default connect(mapStateToProps)(EditModal);

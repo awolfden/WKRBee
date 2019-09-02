@@ -15,20 +15,21 @@ function EmployeeList(props) {
         }
     }
 
-    return(
-        <div key={employee.id} id={employee.id} style={{backgroundColor:backgroundColor(index)}}>
+    
+      return(
+        <div key={index} id={employee._id} style={{backgroundColor:backgroundColor(index)}}>
           <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
           <div ><div style={{minWidth: '150px'}}>{employee.firstName} {employee.middleInitial} {employee.lastName}</div></div>
           <div ><div style={{justifyContent:'left'}}>{employee.status}</div></div>
           <div >{employee.dateOfBirth}</div>
           <div >{employee.dateOfEmployment}</div>
-          <div >{employee.id}</div>
           <ShowModal employee={employee} />
-          <EditModal employee={employee} />
+          <EditModal getEmployees={props.getEmployees} employee={employee} />
           </div>
         </div>
       )
-    })
+
+  })
 
 
   return (

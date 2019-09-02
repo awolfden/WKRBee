@@ -62,11 +62,9 @@ export default function CreateModal(props) {
     middleInitial: '',
     lastName: '',
     status: '',
-    dateOfHire: '',
+    dateOfEmployment: '',
     dateOfBirth: '',
     id: '',
-    multiline: '',
-    currency: '',
   });
 
   const handleChange = name => event => {
@@ -93,8 +91,16 @@ export default function CreateModal(props) {
 
         if(parsedResponse.message === 'successfully added employee'){
             console.log(props, 'PROPSSSSS');
+            setValues({
+              firstName: '',
+              middleInitial: '',
+              lastName: '',
+              status: '',
+              dateOfEmployment: '',
+              dateOfBirth: '',
+              id: '',
+            })
             props.getEmployees();
-            //props.dispatch({type: 'GET_EMPLOYEES', payload: parsedResponse.data}); 
         }
 
     } catch(err) {
@@ -171,7 +177,7 @@ export default function CreateModal(props) {
                             // placeholder="Date Of Hire"
                             className={classes.textField}
                             value={values.dateOfHire}
-                            onChange={handleChange('dateOfHire')}
+                            onChange={handleChange('dateOfEmployment')}
                             margin="normal"
                         />
                         <TextField

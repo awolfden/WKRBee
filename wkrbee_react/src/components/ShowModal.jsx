@@ -46,6 +46,7 @@ export default function ShowModal(props) {
   const [open, setOpen] = React.useState(false);
   
   const employee = props.employee;
+  console.log(employee._id);
 
   const handleOpen = () => {
     setOpen(true);
@@ -63,12 +64,12 @@ export default function ShowModal(props) {
     status: employee.status,
     dateOfHire: employee.dateOfEmployment,
     dateOfBirth: employee.dateOfBirth,
-    id: employee.id,
+    id: employee._id,
     multiline: 'Controlled',
     currency: 'EUR',
   });
 
-
+  console.log(values);
   return (
     <div>
       <button className={classes.button} type="button" onClick={handleOpen}>
@@ -124,7 +125,7 @@ export default function ShowModal(props) {
                         />
                         <TextField
                             id="standard-name"
-                            label={"Date Of Hire: " + employee.dateOfEmployment}
+                            label={"Date Of Hire: "}
                             className={classes.textField}
                             value={values.dateOfHire}
                             margin="normal"
@@ -141,7 +142,7 @@ export default function ShowModal(props) {
                         id="standard-name"
                         label="Employee ID"
                         className={classes.textField}
-                        value={values.id}
+                        value={employee._id}
                         margin="normal"
                     />
                 </div>
