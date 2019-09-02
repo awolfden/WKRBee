@@ -23,7 +23,7 @@ function EmployeeList(props) {
           <div ><div style={{justifyContent:'left'}}>{employee.status}</div></div>
           <div >{employee.dateOfBirth}</div>
           <div >{employee.dateOfEmployment}</div>
-          <ShowModal employee={employee} />
+          <ShowModal getEmployees={props.getEmployees} employee={employee} />
           <EditModal getEmployees={props.getEmployees} employee={employee} />
           </div>
         </div>

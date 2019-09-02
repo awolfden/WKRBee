@@ -63,25 +63,49 @@ function EditModal(props) {
     status: employee.status,
     dateOfHire: employee.dateOfEmployment,
     dateOfBirth: employee.dateOfBirth,
-    id: employee._id,
-    multiline: 'Controlled',
-    currency: 'EUR',
+    id: employee._id
   });
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (formData, e) => {
+    console.log(e);
     e.preventDefault();
-    console.log('submit hit');
+    console.log(formData, 'submit hit');
+
+    try {
+        const updatedEmployee = await fetch(`http://localhost:9001/employees/` + employee._id, {
+            method: 'PUT',
+            credentials: 'include',
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        const parsedResponse = await updatedEmployee.json();
+        console.log(parsedResponse);
+        props.getEmployees();
+
+        // const editedEmployee = this.state.workouts.map((workout) => {
+        //     if(workout._id === this.state.workoutToEdit._id){
+        //         workout = parsedResponse.data
+        //     }
+        //     return workout
+        // });
+
+        // this.setState({
+        //     workouts: editedWorkoutArr,
+        // });
+
+    } catch(err) {
+        console.log(err)
+    }        
   };
 
-  // const handleDelete = (e) => {
-  //   e.preventDefault();
-  //   handleClose();
-  //   console.log('delete hit');
-  // }
+
 
   const handleDelete = async (deletedEmployeeId) => {
     console.log('delete hit', deletedEmployeeId);
@@ -127,13 +151,13 @@ function EditModal(props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2 id="transition-modal-title">Edit {employee.firstName} {employee.middleInitial} {employee.lastName}</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit.bind(null, values)}>
                 <div className='modalDiv'>
                     <div>
                         <TextField
                             id="standard-name"
                             label='First Name'
-                            // placeholder='First Name'
+                            name='firstName'
                             className={classes.textField}
                             value={values.firstName}
                             onChange={handleChange('firstName')}
@@ -142,7 +166,7 @@ function EditModal(props) {
                         <TextField
                             id="standard-name"
                             label="Middle Initial"
-                            // placeholder="Middle Initial"
+                            name='middleInitial'
                             className={classes.textField}
                             value={values.middleInitial}
                             onChange={handleChange('middleInitial')}
@@ -151,7 +175,7 @@ function EditModal(props) {
                         <TextField
                             id="standard-name"
                             label="Last Name"
-                            // placeholder="Last Name"
+                            name='lastName'
                             className={classes.textField}
                             value={values.lastName}
                             onChange={handleChange('lastName')}
@@ -162,7 +186,7 @@ function EditModal(props) {
                         <TextField
                             id="standard-name"
                             label="Employment Status"
-                            // placeholder="Employment Status"
+                            name='status'
                             className={classes.textField}
                             value={values.status}
                             onChange={handleChange('status')}
@@ -171,7 +195,7 @@ function EditModal(props) {
                         <TextField
                             id="standard-name"
                             label={"Date Of Hire: "}
-                            // placeholder="Date Of Hire"
+                            name='dateOfHire'
                             className={classes.textField}
                             value={values.dateOfHire}
                             onChange={handleChange('dateOfHire')}
@@ -180,7 +204,7 @@ function EditModal(props) {
                         <TextField
                             id="standard-name"
                             label="Date of Birth"
-                            // placeholder="Date of Birth"
+                            name='dateOfBirth'
                             className={classes.textField}
                             value={values.dateOfBirth}
                             onChange={handleChange('dateOfBirth')}
