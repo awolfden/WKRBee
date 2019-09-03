@@ -5,12 +5,12 @@ import Button from '@material-ui/core/Button';
 
 
 // I created this component as a class to show that I know how to use 'this' since 
-// that was the question that I missed in the phone interview :) 
+// that was the question that I fumbled in the phone interview :) 
 
 class LoginForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { // local state used here only for the form submission
+        this.state = { // I used local state for forms throughout the app 
             userName: '',
             password: ''
         }

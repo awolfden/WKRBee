@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
@@ -20,37 +19,27 @@ const theme = createMuiTheme({
             main: brown[900],
             light: brown[100],
             dark: brown[400]
-        },
-        
+        }
     }
 });
 
 const initialState = {
     employees: [{
         id: 1,
-        firstName: 'Adam',
-        middleInitial: 'G',
-        lastName: 'Wolfman',
+        firstName: 'Add',
+        middleInitial: 'An',
+        lastName: 'Employee',
         dateOfBirth: '12/4/1986',
         dateOfEmployment: '9/1/2019',
-        status: 'active'
-    },
-    {
-        id: 2,
-        firstName: 'James',
-        middleInitial: 'G',
-        lastName: 'Furgeson',
-        dateOfBirth: '12/4/1986',
-        dateOfEmployment: '9/1/2019',
-        status: 'active'
-      }],
+        status: 'ACTIVE'
+    }],
         logged: false,
         user: ''
 }
 
 
 function reducer(state = initialState, action) {
-    console.log(action);
+
     switch(action.type) {
         case 'LOGIN':
             return { ...state, logged: true, user: action.payload }
@@ -72,19 +61,11 @@ function reducer(state = initialState, action) {
             } else {
                 return { ...state, employees: action.payload, ...state.logged, ...state.user }
             }
-            
         case 'CREATE_EMPLOYEE':
-            console.log(action.payload);
             return {...state, employees: action.payload }
         default: 
             return state
     }
-
-    const testFunction = () => {
-        return(
-            console.log('can you pass down action functions with redux?')
-        )
-    };
 
 }
 
@@ -104,7 +85,5 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+
 serviceWorker.unregister();

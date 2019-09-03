@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -46,9 +46,8 @@ function EditModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   
-  // const employee = props.employee;
-
-  const employeeId = props.employeeId; // the id of the employee clicked on passed down
+  // identifies the specific employee based on the id passed down from parent clicked on 
+  const employeeId = props.employeeId; 
   const thisEmployee = props.allEmployees.filter(emp => emp._id === employeeId);
   const employee = thisEmployee[0];
 
@@ -60,7 +59,7 @@ function EditModal(props) {
     setOpen(false);
   };
 
-
+// using local state for the form submission 
   const [values, setValues] = React.useState({
     firstName: '',
     middleInitial: '',
@@ -71,7 +70,8 @@ function EditModal(props) {
     id: ''
   });
 
- 
+ // implemented a re-render when the correct employee is identified through 
+ // the filter by id above to get correct values in place
   useEffect(() => {
     setValues({
       firstName: employee.firstName,
@@ -84,18 +84,12 @@ function EditModal(props) {
     })
   }, [employee])
   
-
-
-  console.log(values, 'values on edit modal');
-
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
 
   const handleSubmit = async (formData, e) => {
-    console.log(e);
     e.preventDefault();
-    console.log(formData, 'submit hit');
 
     try {
         const updatedEmployee = await fetch(`http://localhost:9001/employees/` + employee._id, {
@@ -108,20 +102,16 @@ function EditModal(props) {
         })
 
         const parsedResponse = await updatedEmployee.json();
-        console.log(parsedResponse);
-        
+        console.log(parsedResponse);        
         props.getEmployees();
-
 
     } catch(err) {
         console.log(err)
     }        
   };
 
-
-
   const handleDelete = async (deletedEmployeeId) => {
-    console.log('delete hit', deletedEmployeeId);
+
     try{
         const deleteWorkout = await fetch(`http://localhost:9001/employees/${deletedEmployeeId}`, {
             method: 'DELETE',
@@ -132,11 +122,9 @@ function EditModal(props) {
         });
 
         const parsedResponse = await deleteWorkout.json();
-        if(parsedResponse.status === 200){
-          console.log('successful delete')  
+        if(parsedResponse.status === 200){ 
           props.getEmployees();
         }
-
 
     } catch(err) {
         console.log(err);

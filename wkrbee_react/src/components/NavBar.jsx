@@ -7,13 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import HiveLogo from '../images/beehive.png';
-import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
-  logout: {
-    justifyContent: 'right'
-  }
-}));
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -37,9 +31,6 @@ ElevationScroll.propTypes = {
 
 
 function ElevateAppBar(props) {
-  const classes = useStyles();
-  
-
 
   const logout = async () => {
     try {
@@ -57,8 +48,6 @@ function ElevateAppBar(props) {
     } catch(err) {
         console.log(err);
     } 
-
-
   }
   
   return (
@@ -72,8 +61,8 @@ function ElevateAppBar(props) {
                   <img src={HiveLogo} alt={'worker bee logo'} style={{height: '50px', paddingRight: '25px'}}/>
                   <Typography variant="h6">WorkerBee</Typography>
                 </div>
-                {props.logged ? <Typography onClick={logout} variant="h6" className={classes.logout} id='logout'>Logout</Typography> 
-                : <Typography variant="h6" className={classes.logout} id='logout'></Typography>
+                {props.logged ? <Typography onClick={logout} variant="h6"  id='logout'>Logout</Typography> 
+                : <Typography variant="h6"  id='logout'></Typography>
                 }
             </Toolbar>
             </AppBar>

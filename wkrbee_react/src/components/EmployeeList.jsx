@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import EditModal from './EditModal';
 import ShowModal from './ShowModal';
@@ -15,7 +15,6 @@ function EmployeeList(props) {
           return '#ddd9c8'
         }
     }
-    console.log(employee._id, 'employee id on employeeList');
     
       return(
         <div key={index} id={employee._id} style={{backgroundColor:backgroundColor(index)}}>
@@ -31,10 +30,6 @@ function EmployeeList(props) {
       )
 
   })
-
-  // useEffect(() => {
-  //   props.getEmployees()
-  // }, []) 
 
   return (
     <div className="employeeList">

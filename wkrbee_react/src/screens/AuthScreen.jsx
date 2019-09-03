@@ -1,16 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import BeeLogo from '../images/beeLogo_large.png';
 import LoginForm from '../components/LoginForm';
 
 
-
-
-function AuthScreen(props) {
-  
-
-console.log(props.state);
-
+function AuthScreen() {
 
   return (
     <div id='auth'>
@@ -32,9 +25,5 @@ console.log(props.state);
   );
 }
 
-const mapStateToProps = (state) => ({
-  firstName: state.employees[0].firstName,
-  state: state
-})
 
-export default connect(mapStateToProps)(AuthScreen);
+export default AuthScreen;

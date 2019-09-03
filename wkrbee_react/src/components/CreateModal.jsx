@@ -46,8 +46,6 @@ const useStyles = makeStyles(theme => ({
 export default function CreateModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  
-  const employee = props.employee;
 
   const handleOpen = () => {
     setOpen(true);
@@ -74,8 +72,6 @@ export default function CreateModal(props) {
 
   const createEmployee = async (formData, e) => {
     e.preventDefault();
-    console.log('submit hit');
-    console.log(formData);
     try {
         const createdEmployee = await fetch(`http://localhost:9001/employees/`, {
             method: 'POST',
@@ -87,10 +83,8 @@ export default function CreateModal(props) {
         });
 
         const parsedResponse = await createdEmployee.json();
-        console.log(parsedResponse);
 
         if(parsedResponse.message === 'successfully added employee'){
-            console.log(props, 'PROPSSSSS');
             setValues({
               firstName: '',
               middleInitial: '',
@@ -136,7 +130,6 @@ export default function CreateModal(props) {
                         <TextField
                             id="standard-name"
                             label='First Name'
-                            // placeholder='First Name'
                             className={classes.textField}
                             value={values.firstName}
                             onChange={handleChange('firstName')}
@@ -145,7 +138,6 @@ export default function CreateModal(props) {
                         <TextField
                             id="standard-name"
                             label="Middle Initial"
-                            // placeholder="Middle Initial"
                             className={classes.textField}
                             value={values.middleInitial}
                             onChange={handleChange('middleInitial')}
@@ -154,7 +146,6 @@ export default function CreateModal(props) {
                         <TextField
                             id="standard-name"
                             label="Last Name"
-                            // placeholder="Last Name"
                             className={classes.textField}
                             value={values.lastName}
                             onChange={handleChange('lastName')}
@@ -165,7 +156,6 @@ export default function CreateModal(props) {
                         <TextField
                             id="standard-name"
                             label="Employment Status"
-                            // placeholder="Employment Status"
                             className={classes.textField}
                             value={values.status}
                             onChange={handleChange('status')}
@@ -174,7 +164,6 @@ export default function CreateModal(props) {
                         <TextField
                             id="standard-name"
                             label={"Date Of Hire: "}
-                            // placeholder="Date Of Hire"
                             className={classes.textField}
                             value={values.dateOfHire}
                             onChange={handleChange('dateOfEmployment')}
@@ -183,16 +172,13 @@ export default function CreateModal(props) {
                         <TextField
                             id="standard-name"
                             label="Date of Birth"
-                            // placeholder="Date of Birth"
                             className={classes.textField}
                             value={values.dateOfBirth}
                             onChange={handleChange('dateOfBirth')}
                             margin="normal"
                         />
                     </div>
-                    
                 </div>
-                
                 <Button type='submit' onClick={handleClose} variant='contained' className={classes.modalButton}>
                     Create Employee
                 </Button>
@@ -202,4 +188,4 @@ export default function CreateModal(props) {
       </Modal>
     </div>
   );
-}
+};
