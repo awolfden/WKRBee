@@ -190,8 +190,7 @@ function EditModal(props) {
                             label="Employment Status"
                             name='status'
                             className={classes.textField}
-                            value={values.status}
-                            onChange={handleChange('status')}
+                            value='ACTIVE' // <= always active until deactivated
                             margin="normal"
                         />
                         <TextField
@@ -216,7 +215,7 @@ function EditModal(props) {
                     
                 </div>
                 <Button onClick={() => handleDelete(employee._id)} variant='contained' className={classes.modalDeleteButton}>
-                    Delete Employee
+                    Deactivate Employee
                 </Button>
                 <Button type='submit' onClick={handleClose} variant='contained' className={classes.modalButton}>
                     Submit Changes

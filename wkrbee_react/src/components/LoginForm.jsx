@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
             this.props.dispatch({type: 'LOGIN', payload: parsedResponse.data.usersDbId});
           } else {
             this.setState({
-              logFailMsg: 'User name not available'
+              logFailMsg: 'User Name Not Available'
             })
           }
       } catch(err) {
@@ -60,6 +60,10 @@ class LoginForm extends React.Component {
         //console.log(parsedResponse);
         if(parsedResponse.data.msg === 'login successful'){
           this.props.dispatch({type: 'LOGIN', payload: parsedResponse.data.usersDbId}); 
+        } else {
+          this.setState({
+            logFailMsg: 'Credentials Incorrect'
+          })
         }
 
       } catch(err) {
@@ -85,7 +89,8 @@ class LoginForm extends React.Component {
 
         return (
             <form onSubmit={this.whichSubmit.bind(null, this.state)} className="loginForm">
-              <h3>{this.props.title}</h3> 
+              <h3>{this.props.title}</h3>
+              { this.state.logFailMsg ? <p className='logFail'>{this.state.logFailMsg}</p> : null } 
               <div>
               <Input
                 field='identifier'

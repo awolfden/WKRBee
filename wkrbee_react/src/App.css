@@ -71,6 +71,10 @@
     margin-top: 0;
 }
 
+.logFail {
+    color: rgb(116, 49, 49);
+}
+
 .indexScreenDiv {
     margin-bottom: 100px;
 }

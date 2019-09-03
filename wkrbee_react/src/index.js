@@ -27,7 +27,7 @@ const initialState = {
     employees: [{
         id: 1,
         firstName: 'Add',
-        middleInitial: 'An',
+        middleInitial: 'Anne',
         lastName: 'Employee',
         dateOfBirth: '12/4/1986',
         dateOfEmployment: '9/1/2019',
@@ -47,7 +47,7 @@ function reducer(state = initialState, action) {
             return { ...state, employees: [{
                 id: 1,
                 firstName: 'Add',
-                middleInitial: 'An',
+                middleInitial: 'Anne',
                 lastName: 'Employee',
                 dateOfBirth: '12/4/1986',
                 dateOfEmployment: '9/1/2019',

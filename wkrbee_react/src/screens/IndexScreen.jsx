@@ -5,31 +5,33 @@ import BeeLogo from '../images/beeLogo_large.png';
 import CreateModal from '../components/CreateModal';
 
 
+
 function IndexScreen(props) {
 
   const { employees } = props.state;
-  
-    const getEmployees = async () => {
 
-      try {
-          const response = await fetch(`http://localhost:9001/employees/`);
-          if(response.status !== 200){
-              throw(Error(response.statusText));
-          }
-          const parsedEmployees = await response.json();  
-          if(props.state.logged){
-              const employeeArr = parsedEmployees.data;
-              const userEmployees = employeeArr.filter((employee) => employee.user.toString() === props.state.user.toString());
-              props.dispatch({ type:'GET_EMPLOYEES', payload: userEmployees })
-          }   
-      } catch(err) {
-          console.log(err);
-      }
+  const getEmployees = async () => {
+
+    try {
+        const response = await fetch(`http://localhost:9001/employees/`);
+        if(response.status !== 200){
+            throw(Error(response.statusText));
+        }
+        const parsedEmployees = await response.json();  
+        if(props.state.logged){
+            const employeeArr = parsedEmployees.data;
+            const userEmployees = employeeArr.filter((employee) => employee.user.toString() === props.state.user.toString());
+            props.dispatch({ type:'GET_EMPLOYEES', payload: userEmployees })
+        }   
+    } catch(err) {
+        console.log(err);
+    }
 
   };
 
-  // Note: the console linter is pointing to the empty dependency array of useEffect, but per the docs
-  // this is how you implement "componentDidMount" with hooks so I'm not sure why it's a warning 
+  //Note: the console linter is pointing to the empty dependency array of useEffect, but per the docs
+  //this is how you implement "componentDidMount" with hooks so I'm not sure why it's a warning
+   
   useEffect(() => {
     getEmployees()
   }, []);
@@ -56,8 +58,8 @@ function IndexScreen(props) {
               <div style={{paddingLeft: '10px'}}>STATUS</div>
               <div style={{marginLeft: '-30px'}}>DOB</div>
               <div >HIRE DATE</div>
-              <div style={{minWidth: 80}}>      </div>
-              <div style={{minWidth: 80}}>      </div>
+              <div style={{minWidth: 80}}></div>
+              <div style={{minWidth: 80}}></div>
             </div>
           </div>
 

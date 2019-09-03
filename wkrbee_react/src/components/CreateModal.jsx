@@ -59,7 +59,7 @@ export default function CreateModal(props) {
     firstName: '',
     middleInitial: '',
     lastName: '',
-    status: '',
+    status: 'ACTIVE',
     dateOfEmployment: '',
     dateOfBirth: '',
     id: '',
@@ -89,7 +89,7 @@ export default function CreateModal(props) {
               firstName: '',
               middleInitial: '',
               lastName: '',
-              status: '',
+              status: 'ACTIVE',
               dateOfEmployment: '',
               dateOfBirth: '',
               id: '',
@@ -157,8 +157,7 @@ export default function CreateModal(props) {
                             id="standard-name"
                             label="Employment Status"
                             className={classes.textField}
-                            value={values.status}
-                            onChange={handleChange('status')}
+                            value='ACTIVE' // <= always active until deactivated with delete
                             margin="normal"
                         />
                         <TextField
