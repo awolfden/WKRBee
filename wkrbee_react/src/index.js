@@ -80,6 +80,12 @@ function reducer(state = initialState, action) {
             return state
     }
 
+    const testFunction = () => {
+        return(
+            console.log('can you pass down action functions with redux?')
+        )
+    };
+
 }
 
 

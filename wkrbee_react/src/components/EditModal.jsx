@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -46,7 +46,11 @@ function EditModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   
-  const employee = props.employee;
+  // const employee = props.employee;
+
+  const employeeId = props.employeeId; // the id of the employee clicked on passed down
+  const thisEmployee = props.allEmployees.filter(emp => emp._id === employeeId);
+  const employee = thisEmployee[0];
 
   const handleOpen = () => {
     setOpen(true);
@@ -56,16 +60,33 @@ function EditModal(props) {
     setOpen(false);
   };
 
+
   const [values, setValues] = React.useState({
-    firstName: employee.firstName,
-    middleInitial: employee.middleInitial,
-    lastName: employee.lastName,
-    status: employee.status,
-    dateOfHire: employee.dateOfEmployment,
-    dateOfBirth: employee.dateOfBirth,
-    id: employee._id
+    firstName: '',
+    middleInitial: '',
+    lastName: '',
+    status: '',
+    dateOfHire: '',
+    dateOfBirth: '',
+    id: ''
   });
 
+ 
+  useEffect(() => {
+    setValues({
+      firstName: employee.firstName,
+      middleInitial: employee.middleInitial,
+      lastName: employee.lastName,
+      status: employee.status,
+      dateOfHire: employee.dateOfEmployment,
+      dateOfBirth: employee.dateOfBirth,
+      id: employee._id
+    })
+  }, [employee])
+  
+
+
+  console.log(values, 'values on edit modal');
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
@@ -91,26 +112,6 @@ function EditModal(props) {
         
         props.getEmployees();
 
-        setValues({
-          firstName: '',
-          middleInitial: '',
-          lastName: '',
-          status: '',
-          dateOfHire: '',
-          dateOfBirth: '',
-          id: ''
-        })
-
-        // const editedEmployee = this.state.workouts.map((workout) => {
-        //     if(workout._id === this.state.workoutToEdit._id){
-        //         workout = parsedResponse.data
-        //     }
-        //     return workout
-        // });
-
-        // this.setState({
-        //     workouts: editedWorkoutArr,
-        // });
 
     } catch(err) {
         console.log(err)
@@ -148,6 +149,7 @@ function EditModal(props) {
       <button className={classes.button} type="button" onClick={handleOpen}>
         Edit Employee
       </button>
+      
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -239,8 +241,11 @@ function EditModal(props) {
   );
 }
 
+
+
 const mapStateToProps = (state) =>({
-  state: state
+  state: state,
+  allEmployees: state.employees
 });
 
 export default connect(mapStateToProps)(EditModal);
