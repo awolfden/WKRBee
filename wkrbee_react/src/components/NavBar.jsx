@@ -28,8 +28,6 @@ ElevationScroll.propTypes = {
   window: PropTypes.func,
 };
 
-
-
 function ElevateAppBar(props) {
 
   const logout = async () => {
@@ -40,7 +38,7 @@ function ElevateAppBar(props) {
       })
 
       const parsedResponse = await logoutUser.json();
-      console.log(parsedResponse, 'this is parsed response')
+      //console.log(parsedResponse, 'this is parsed response')
       if(parsedResponse.data === 'logged user out'){
         props.dispatch({type: 'LOGOUT', payload: false});
       }

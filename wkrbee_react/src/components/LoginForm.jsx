@@ -19,8 +19,6 @@ class LoginForm extends React.Component {
     onSubmitRegister = async (formData, e) => {
       e.preventDefault();
 
-      console.log(formData);
-
       try {
           const createdUser = await fetch(`http://localhost:9001/users/register`, {
               method: 'POST',
@@ -48,7 +46,7 @@ class LoginForm extends React.Component {
 
     onSubmitLogin = async (formData, e) => {
       e.preventDefault();
-      console.log('hit login route');
+
       try {
         const loginUser = await fetch(`http://localhost:9001/users/login`, {
         method: 'POST',
@@ -59,7 +57,7 @@ class LoginForm extends React.Component {
         }
         })
         const parsedResponse = await loginUser.json();
-        console.log(parsedResponse);
+        //console.log(parsedResponse);
         if(parsedResponse.data.msg === 'login successful'){
           this.props.dispatch({type: 'LOGIN', payload: parsedResponse.data.usersDbId}); 
         }
@@ -120,8 +118,6 @@ class LoginForm extends React.Component {
         };
     }
 
-
-    
 
 const mapStateToProps = (state) => ({
     state: state

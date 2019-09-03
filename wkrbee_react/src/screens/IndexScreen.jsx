@@ -49,6 +49,19 @@ function IndexScreen(props) {
         <div className='employeeListDiv'>
         
           <CreateModal getEmployees={getEmployees}>Add New Employee +</CreateModal>
+          
+          <div >
+            <div style={{display: 'flex', justifyContent: 'space-between', fontWeight: 600, color: 'gray'}}>
+              <div style={{minWidth: '130px', paddingLeft: '30px'}}>EMPLOYEE NAME</div>
+              <div style={{paddingLeft: '10px'}}>STATUS</div>
+              <div style={{marginLeft: '-30px'}}>DOB</div>
+              <div >HIRE DATE</div>
+              <div style={{minWidth: 80}}>      </div>
+              <div style={{minWidth: 80}}>      </div>
+            </div>
+          </div>
+
+
           <EmployeeList getEmployees={getEmployees}  />
         </div>
         <div className='indexLogoDiv'>
