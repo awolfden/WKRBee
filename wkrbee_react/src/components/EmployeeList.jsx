@@ -18,14 +18,12 @@ function EmployeeList(props) {
     
       return(
         <tr key={index} id={employee._id} style={{backgroundColor:backgroundColor(index)}}>
-          
           <td className='tableNameCell' style={{width:"20%", padding: 5}}>{employee.firstName} {employee.middleInitial} {employee.lastName}</td>
           <td className='tableStatus'>{employee.status}</td>
           <td className='tableDOB'>{employee.dateOfBirth}</td>
           <td className='tableHireDate'>{employee.dateOfEmployment}</td>
           <td className='tableButton'><ShowModal getEmployees={props.getEmployees} employeeId={employee._id} /></td>
           <td className='tableButton'><EditModal getEmployees={props.getEmployees} employeeId={employee._id} /></td>
-          
         </tr>
       )
 

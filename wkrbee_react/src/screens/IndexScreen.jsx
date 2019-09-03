@@ -49,9 +49,7 @@ function IndexScreen(props) {
 
       <div className='indexContentDiv' >
         <div className='employeeListDiv'>
-        
           <CreateModal getEmployees={getEmployees}>Add New Employee +</CreateModal>
-          
           <table className='table'>
             <tr style={{width: '100%', color: 'gray'}}>
               <th className='tableNameCell' >EMPLOYEE NAME</th>
@@ -61,16 +59,13 @@ function IndexScreen(props) {
               <th></th>
               <th></th>
             </tr>
-          
           <EmployeeList getEmployees={getEmployees}  />
           </table>
-
         </div>
         <div className='indexLogoDiv'>
           <img src={BeeLogo} alt="bee logo"/>
         </div>
       </div>
-
     </div>
   );
 }
