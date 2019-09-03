@@ -91,7 +91,7 @@
     padding: 10px;
     border-radius: 5px;
     width: 65%;
-    min-width: 460px;
+    min-width: 500px;
 }
 
 .indexLogoDiv {
@@ -135,6 +135,25 @@
     font-weight: 400;
 }
 
+.table {
+    width: 100%;
+}
+
+.table th, .table td {
+    width: 16%;
+    padding: 5px;
+}
+
+.tableNameCell {
+    width: 20%;
+    padding: 5px;
+}
+
+.tableButton {
+    text-align: center;
+}
+
+
 .columnHeaders {
     margin-left: 30px;
 }
@@ -161,3 +180,67 @@
 .MuiToolbar-root {
     justify-content: space-between;
 }
+
+@media only screen and (max-width: 600px) {
+    html, body {
+        width: 100%;
+    }
+
+    #auth h1 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        padding-top: 40px;
+        padding-bottom: 60px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.267);
+    }
+
+    .authScreenHeading h2 {
+        display: none;
+    }
+
+    .authScreenLogoDiv, .authScreenFormsContainer {
+        width: auto;
+        padding: 0px;
+    }
+
+    .authScreenFormsContainer {
+        flex-direction: column-reverse;
+    }
+
+    .authScreenFormsDiv {
+        min-width: 100%;
+        padding: 5px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.267);
+    }
+
+  .authScreenLogo {
+        min-width: 120px;
+        width: 55%;
+        margin-top: 35px;
+    }
+
+    .indexScreenOrg {
+        margin-top: 15px;
+    }
+
+    .indexLogoDiv {
+        padding-top: 30px;
+    }
+
+    .tableStatus, .tableDOB, .tableHireDate, .authDescription {
+        display: none;
+    }
+    .table {
+        margin: 0;
+        padding: 0;
+    }
+    .table, .employeeListDiv, .indexContentDiv {
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .makeStyles-modalDeleteButton-225 {
+        float: right !important;
+    }
+  }

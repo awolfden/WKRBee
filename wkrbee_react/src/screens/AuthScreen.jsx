@@ -14,7 +14,7 @@ function AuthScreen() {
       <div className='authScreenFormsContainer'>
         <div className='authScreenLogoDiv'>
           <img className='authScreenLogo' src={BeeLogo} alt='workerbee logo'/>
-          <p>WokerBee is an integrated employee management system for the modern business.</p>
+          <p className='authDescription'>WokerBee is an integrated employee management system for the modern business.</p>
         </div>
         <div className='authScreenFormsDiv'>
           <LoginForm title={'Login'} name={'userName'} password={'password'} action={'login_user'}/>
