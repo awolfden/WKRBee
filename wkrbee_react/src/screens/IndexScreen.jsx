@@ -50,7 +50,7 @@ function IndexScreen(props) {
     getEmployees()
   }, [])
 
-  
+  console.log(employees);
   return (
     <div className="indexScreenDiv">
       <div className='indexScreenTitle'>
@@ -68,7 +68,7 @@ function IndexScreen(props) {
           <CreateModal getEmployees={getEmployees}>Add New Employee +</CreateModal>
           
 
-          <EmployeeList getEmployees={getEmployees} employees={employees} />
+          <EmployeeList getEmployees={getEmployees}  />
         </div>
         <div className='indexLogoDiv'>
           <img src={BeeLogo} alt="bee logo"/>

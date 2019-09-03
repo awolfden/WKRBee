@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -66,6 +66,7 @@ function EditModal(props) {
     id: employee._id
   });
 
+
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
@@ -87,7 +88,18 @@ function EditModal(props) {
 
         const parsedResponse = await updatedEmployee.json();
         console.log(parsedResponse);
+        
         props.getEmployees();
+
+        setValues({
+          firstName: '',
+          middleInitial: '',
+          lastName: '',
+          status: '',
+          dateOfHire: '',
+          dateOfBirth: '',
+          id: ''
+        })
 
         // const editedEmployee = this.state.workouts.map((workout) => {
         //     if(workout._id === this.state.workoutToEdit._id){

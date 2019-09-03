@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -41,12 +42,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ShowModal(props) {
+function ShowModal(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   
-  const employee = props.employee;
-  console.log(employee._id);
+  const employeeId = props.employeeId; // the id of the employee clicked on passed down
+  const thisEmployee = props.allEmployees.filter(emp => emp._id === employeeId);
+  const employee = thisEmployee[0];
+
 
   const handleOpen = () => {
     setOpen(true);
@@ -57,19 +60,7 @@ export default function ShowModal(props) {
     setOpen(false);
   };
 
-  const [values, setValues] = React.useState({
-    firstName: employee.firstName,
-    middleInitial: employee.middleInitial,
-    lastName: employee.lastName,
-    status: employee.status,
-    dateOfHire: employee.dateOfEmployment,
-    dateOfBirth: employee.dateOfBirth,
-    id: employee._id,
-    multiline: 'Controlled',
-    currency: 'EUR',
-  });
 
-  console.log(values);
   return (
     <div>
       <button className={classes.button} type="button" onClick={handleOpen}>
@@ -97,21 +88,21 @@ export default function ShowModal(props) {
                             id="standard-name"
                             label='First Name'
                             className={classes.textField}
-                            value={values.firstName}
+                            value={employee.firstName}
                             margin="normal"
                         />
                         <TextField
                             id="standard-name"
                             label="Middle Initial"
                             className={classes.textField}
-                            value={values.middleInitial}
+                            value={employee.middleInitial}
                             margin="normal"
                         />
                         <TextField
                             id="standard-name"
                             label="Last Name"
                             className={classes.textField}
-                            value={values.lastName}
+                            value={employee.lastName}
                             margin="normal"
                         />
                     </div>
@@ -120,21 +111,21 @@ export default function ShowModal(props) {
                             id="standard-name"
                             label="Employment Status"
                             className={classes.textField}
-                            value={values.status}
+                            value={employee.status}
                             margin="normal"
                         />
                         <TextField
                             id="standard-name"
                             label={"Date Of Hire: "}
                             className={classes.textField}
-                            value={values.dateOfHire}
+                            value={employee.dateOfEmployment}
                             margin="normal"
                         />
                         <TextField
                             id="standard-name"
                             label="Date of Birth"
                             className={classes.textField}
-                            value={values.dateOfBirth}
+                            value={employee.dateOfBirth}
                             margin="normal"
                         />
                     </div>
@@ -157,3 +148,9 @@ export default function ShowModal(props) {
     </div>
   );
 }
+
+const mapStateToProps = (state) =>({
+  allEmployees: state.employees
+});
+
+export default connect(mapStateToProps)(ShowModal);

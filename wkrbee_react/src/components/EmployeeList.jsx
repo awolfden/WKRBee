@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import EditModal from './EditModal';
 import ShowModal from './ShowModal';
 
 function EmployeeList(props) {
-  const { employees } = props;
+  const { employees } = props.state;
   
   const renderEmployees = employees.map((employee, index) => {
       
@@ -14,7 +15,7 @@ function EmployeeList(props) {
           return '#ddd9c8'
         }
     }
-
+    console.log(employee._id, 'employee id on employeeList');
     
       return(
         <div key={index} id={employee._id} style={{backgroundColor:backgroundColor(index)}}>
@@ -23,7 +24,7 @@ function EmployeeList(props) {
           <div ><div style={{justifyContent:'left'}}>{employee.status}</div></div>
           <div >{employee.dateOfBirth}</div>
           <div >{employee.dateOfEmployment}</div>
-          <ShowModal getEmployees={props.getEmployees} employee={employee} />
+          <ShowModal getEmployees={props.getEmployees} employeeId={employee._id} />
           <EditModal getEmployees={props.getEmployees} employee={employee} />
           </div>
         </div>
@@ -31,6 +32,9 @@ function EmployeeList(props) {
 
   })
 
+  // useEffect(() => {
+  //   props.getEmployees()
+  // }, []) 
 
   return (
     <div className="employeeList">
@@ -39,4 +43,10 @@ function EmployeeList(props) {
   );
 }
 
-export default EmployeeList;
+
+const mapStateToProps = (state) =>({
+  state: state
+});
+
+export default connect(mapStateToProps)(EmployeeList);
+
