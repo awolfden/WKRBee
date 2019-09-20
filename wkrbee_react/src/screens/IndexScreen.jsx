@@ -14,7 +14,7 @@ function IndexScreen(props) {
   const getEmployees = async () => {
 
     try {
-        const response = await fetch(`https://wkrbee-api.herokuapp.com/employees`);
+        const response = await fetch(`https://cors-anywhere.herokuapp.com/https://wkrbee-api.herokuapp.com/employees`);
         if(response.status !== 200){
             throw(Error(response.statusText));
         }
