@@ -25,7 +25,8 @@ class LoginForm extends React.Component {
               credentials: 'include',
               body: JSON.stringify(formData),
               headers: {
-                  'Content-Type': 'application/json'
+                  'Content-Type': 'application/json',
+                  'Access-Control-Allow-Origin': 'https://awolfden.github.io'
               }
           });
 
@@ -54,6 +55,7 @@ class LoginForm extends React.Component {
         body: JSON.stringify(formData),
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://awolfden.github.io'
         }
         })
         const parsedResponse = await loginUser.json();
