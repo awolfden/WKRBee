@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import EmployeeList from '../components/EmployeeList';
 import BeeLogo from '../images/beeLogo_large.png';
 import CreateModal from '../components/CreateModal';
-
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 function IndexScreen(props) {
