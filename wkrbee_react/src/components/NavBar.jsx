@@ -32,7 +32,7 @@ function ElevateAppBar(props) {
 
   const logout = async () => {
     try {
-      const logoutUser = await fetch(`http://localhost:9001/users/logout`, {
+      const logoutUser = await fetch(`https://wkrbee-api.herokuapp.com/users/logout`, {
         method: 'GET',
         credentials: 'include'
       })
