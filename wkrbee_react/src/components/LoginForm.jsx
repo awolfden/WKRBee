@@ -20,13 +20,12 @@ class LoginForm extends React.Component {
       e.preventDefault();
 
       try {
-          const createdUser = await fetch(`https://wkrbee-api.herokuapp.com/users/register`, {
+          const createdUser = await fetch(`https://cors-anywhere.herokuapp.com/https://wkrbee-api.herokuapp.com/users/register`, {
               method: 'POST',
               credentials: 'include',
               body: JSON.stringify(formData),
               headers: {
                   'Content-Type': 'application/json',
-                  'Access-Control-Allow-Origin': 'https://awolfden.github.io'
               }
           });
 
@@ -49,13 +48,12 @@ class LoginForm extends React.Component {
       e.preventDefault();
 
       try {
-        const loginUser = await fetch(`https://wkrbee-api.herokuapp.com/users/login`, {
+        const loginUser = await fetch(`https://cors-anywhere.herokuapp.com/https://wkrbee-api.herokuapp.com/users/login`, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(formData),
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'https://awolfden.github.io'
         }
         })
         const parsedResponse = await loginUser.json();
