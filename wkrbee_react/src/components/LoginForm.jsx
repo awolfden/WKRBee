@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
       e.preventDefault();
 
       try {
-          const createdUser = await fetch(`http://localhost:9001/users/register`, {
+          const createdUser = await fetch(`https://wkrbee-api.herokuapp.com/users/register`, {
               method: 'POST',
               credentials: 'include',
               body: JSON.stringify(formData),
@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
       e.preventDefault();
 
       try {
-        const loginUser = await fetch(`http://localhost:9001/users/login`, {
+        const loginUser = await fetch(`https://wkrbee-api.herokuapp.com/users/login`, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify(formData),

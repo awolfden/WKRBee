@@ -73,7 +73,7 @@ export default function CreateModal(props) {
   const createEmployee = async (formData, e) => {
     e.preventDefault();
     try {
-        const createdEmployee = await fetch(`http://localhost:9001/employees/`, {
+        const createdEmployee = await fetch(`https://wkrbee-api.herokuapp.com/employees/`, {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(formData),
