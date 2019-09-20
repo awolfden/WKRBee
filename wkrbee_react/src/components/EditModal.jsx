@@ -92,7 +92,7 @@ function EditModal(props) {
     e.preventDefault();
 
     try {
-        const updatedEmployee = await fetch(`https://cors-anywhere.herokuapp.com/https://wkrbee-api.herokuapp.com/employees/` + employee._id, {
+        const updatedEmployee = await fetch(`https://wkrbee-api.herokuapp.com/employees/` + employee._id, {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(formData),
@@ -113,7 +113,7 @@ function EditModal(props) {
   const handleDelete = async (deletedEmployeeId) => {
 
     try{
-        const deleteWorkout = await fetch(`https://cors-anywhere.herokuapp.com/https://wkrbee-api.herokuapp.com/employees/${deletedEmployeeId}`, {
+        const deleteWorkout = await fetch(`https://wkrbee-api.herokuapp.com/employees/${deletedEmployeeId}`, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
