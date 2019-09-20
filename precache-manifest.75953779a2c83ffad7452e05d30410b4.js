@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "57ead37088d1f95d2279a0c4e4e57b96",
+    "revision": "1eef03c5a9f593dc24e348017087ff3d",
     "url": "/WKRBee/index.html"
   },
   {
-    "revision": "dd72ab1281dd68340e8e",
+    "revision": "29bd3c009bf3f5979b45",
     "url": "/WKRBee/static/css/main.beddca8f.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/WKRBee/static/js/2.1105958e.chunk.js"
   },
   {
-    "revision": "dd72ab1281dd68340e8e",
-    "url": "/WKRBee/static/js/main.c4c6de5e.chunk.js"
+    "revision": "29bd3c009bf3f5979b45",
+    "url": "/WKRBee/static/js/main.c6cc4d44.chunk.js"
   },
   {
     "revision": "af496114f329ea26a855",
